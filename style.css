@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: titular, sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  background: #0a0a1a;
+  color: #fff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  user-select: none;
+}
+
+.container {
+  text-align: center;
+  position: relative;
+}
+
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #ffffff80;
+  margin-bottom: 2rem;
+}
+
+.number-display {
+  font-size: 14rem;
+  line-height: 1;
+  min-height: 14rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: #fff;
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.3);
+  transition: text-shadow 0.3s ease;
+}
+
+.number-display.winner {
+  text-shadow:
+    0 0 20px rgba(255, 215, 0, 0.6),
+    0 0 60px rgba(255, 215, 0, 0.3),
+    0 0 100px rgba(255, 215, 0, 0.15);
+  color: #ffd700;
+}
+
+.number-display.rolling {
+  color: #ffffff60;
+}
+
+.history {
+  position: fixed;
+  left: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.history-item {
+  font-size: 1.4rem;
+  color: #ffffff20;
+  letter-spacing: 0.05em;
+  animation: fadeIn 0.5s ease;
+}
+
+.history-item:last-child {
+  color: #ffffff40;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.number-display.reveal {
+  animation: pulse 0.4s ease;
+}
