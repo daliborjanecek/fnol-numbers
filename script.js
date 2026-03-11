@@ -66,6 +66,11 @@ async function roll() {
   isRolling = true;
   display.className = 'number-display rolling';
 
+  // Při prvním losování animovat pozadí z bottom na top
+  if (drawn.length === 0) {
+    document.body.classList.add('bg-top');
+  }
+
   // Vylosovat výherce předem (ale zobrazit ho až po animaci)
   const winner = drawWinner();
 
@@ -74,7 +79,7 @@ async function roll() {
   const steps = 24;
   for (let i = 0; i < steps; i++) {
     const delay = 15 + i * 12; // Postupně delší pauzy (15ms → 291ms)
-    const opacity = (i / steps) * 0.5; // Opacity roste z 0 do ~0.5
+    const opacity = (i / steps) * 0.8; // Opacity roste z 0 do ~0.5
     await new Promise(r => setTimeout(r, delay));
     display.textContent = getRandomFromAll();
     display.style.opacity = opacity;
@@ -86,7 +91,7 @@ async function roll() {
   // Zobrazit výherce s plnou viditelností a zlatým efektem
   display.style.opacity = 1;
   display.textContent = winner;
-  display.className = 'number-display winner reveal';
+  display.className = 'number-display winner';
 
   // Přidat do historie
   addToHistory(winner);
