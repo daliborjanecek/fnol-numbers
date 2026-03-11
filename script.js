@@ -9,7 +9,6 @@ let isRolling = false;
 
 // Reference na HTML elementy
 const display = document.getElementById('display');
-const historyEl = document.getElementById('history');
 
 /**
  * Vrátí náhodné číslo z celého pole vstupenek
@@ -29,22 +28,6 @@ function drawWinner() {
   remaining.splice(idx, 1);
   drawn.push(winner);
   return winner;
-}
-
-/**
- * Přidá vylosované číslo do historie vlevo na obrazovce
- * Zobrazuje maximálně posledních 15 čísel
- */
-function addToHistory(number) {
-  const item = document.createElement('div');
-  item.className = 'history-item';
-  item.textContent = number;
-  historyEl.appendChild(item);
-
-  // Ponechat jen posledních 15 položek
-  while (historyEl.children.length > 15) {
-    historyEl.removeChild(historyEl.firstChild);
-  }
 }
 
 /**
@@ -92,9 +75,6 @@ async function roll() {
   display.style.opacity = 1;
   display.textContent = winner;
   display.className = 'number-display winner';
-
-  // Přidat do historie
-  addToHistory(winner);
 
   // Po 1.5 sekundě povolit další losování
   setTimeout(() => {
