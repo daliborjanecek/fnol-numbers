@@ -27,6 +27,7 @@ function drawWinner() {
   const winner = remaining[idx];
   remaining.splice(idx, 1);
   drawn.push(winner);
+  console.log(`Jiz vylosovana cisla: ${drawn.join(', ')}`);
   return winner;
 }
 
